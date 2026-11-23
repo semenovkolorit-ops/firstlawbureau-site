@@ -3,7 +3,7 @@
 <title>Адвокати з права України для громадян ЄС, США, Канади, ОАЕ та українців за кордоном — Перше адвокатське міжнародне бюро</title><meta name="description" content="Сім’я, спадщина, нерухомість, бізнес і документи в Україні для іноземних громадян і українців за кордоном. Консультації адвоката англійською та українською."><link rel="alternate" hreflang="uk" href="https://firstlawbureau.com/uk/"><link rel="alternate" hreflang="en" href="https://firstlawbureau.com/"><link rel="alternate" hreflang="x-default" href="https://firstlawbureau.com/"><link rel="canonical" href="https://firstlawbureau.com/uk/">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/open-sans-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="../assets/fonts/merriweather-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin="">
-<link rel="stylesheet" href="../assets/site.css?v=202611222354">
+<link rel="stylesheet" href="../assets/site.css?v=202611230827">
 
 
 </head>
@@ -340,7 +340,7 @@ uk:{
  fm_t:'Або залиште контакт — ми напишемо самі', fm_n:'Як до вас звертатися', fm_w:'Де відповісти', fm_c:'Номер або @нік', fm_a:'Напрям', fm_h:'Зручний час для розмови',
  o_tg:'Telegram', o_wa:'WhatsApp', o_call:'Дзвінок', o_mail:'Email',
  fm_note:'Справу тут описувати не потрібно. Обставини та документи адвокат попросить сам, після перевірки конфлікту інтересів.',
- fm_s:'Надіслати запит', fm_p:'Це прототип: форма ще не підключена до Telegram бюро.',
+ fm_s:'Надіслати запит', fm_w:'Надсилаємо…', fm_ok:'Дякуємо! Запит надіслано, адвокат бюро зв’яжеться з вами в обраному каналі.', fm_err:'Не вдалося надіслати. Напишіть нам на info@firstlawbureau.com або спробуйте ще раз.',
  ch0:'Telegram: '+F('нік бюро'),
  n1:'Практики', n2:'Про бюро', n3:'Як працюємо', n4:'Контакти',
  cap:'Вікторія Сандулєєва · адвокат, засновниця бюро', ph:'Місце для фото адвоката',
@@ -500,7 +500,7 @@ en:{
  fm_t:'Or leave your contact and we will write to you', fm_n:'Your name', fm_w:'Where to reply', fm_c:'Number or @username', fm_a:'Practice area', fm_h:'Convenient time for a call',
  o_tg:'Telegram', o_wa:'WhatsApp', o_call:'Phone call', o_mail:'Email',
  fm_note:'There is no need to describe your case here. The advocate will ask for the facts and documents after a conflict-of-interest check.',
- fm_s:'Send request', fm_p:'This is a prototype: the form is not yet connected to the bureau’s Telegram.',
+ fm_s:'Send request', fm_w:'Sending…', fm_ok:'Thank you! Your request has been sent; a bureau advocate will contact you in the channel you chose.', fm_err:'Sending failed. Please write to info@firstlawbureau.com or try again.',
  ch0:'Telegram: '+F('bureau username'),
  n1:'Practice areas', n2:'About', n3:'How we work', n4:'Contact',
  cap:'Victoria Sanduleeva · advocate, founder of the bureau', ph:'Space for the advocate’s photo',
@@ -604,7 +604,11 @@ document.querySelectorAll('form.form').forEach(f=>{
   f.addEventListener('change',()=>syncCt(f));
   f.addEventListener('submit',e=>{e.preventDefault();const c=f.querySelector('.ct'),er=f.querySelector('.ferr'),m=f.querySelector('.fmsg');
     if(!c.value.trim()){c.setAttribute('aria-invalid','true');er.hidden=false;m.textContent='';c.focus();return;}
-    c.removeAttribute('aria-invalid');er.hidden=true;m.textContent=T[document.documentElement.dataset.l].fm_p;});
+    c.removeAttribute('aria-invalid');er.hidden=true;
+    const l=document.documentElement.dataset.l,b=f.querySelector('button[type=submit]'),d={};
+    f.querySelectorAll('input,select').forEach(x=>{if(!x.name)return; d[x.name]=x.type==='checkbox'?(x.checked?(l==='uk'?'так':'yes'):''):(x.tagName==='SELECT'?x.options[x.selectedIndex].textContent:x.value);});
+    d.lang=l; d.page=location.href; b.disabled=true; m.textContent=T[l].fm_w;
+    fetch('/api/request',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(j=>{if(!j.ok)throw 0; m.textContent=T[l].fm_ok; f.reset(); syncCt(f);}).catch(()=>{m.textContent=T[l].fm_err;}).finally(()=>{b.disabled=false;});});
   f.querySelector('.ct').addEventListener('input',e=>{if(e.target.value.trim()){e.target.removeAttribute('aria-invalid');f.querySelector('.ferr').hidden=true;}});
 });
 // services: menu links open the right item; "book" preselects area
