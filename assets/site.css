@@ -472,6 +472,8 @@ section,form,#top{scroll-margin-top:16px}
 .crow:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 @media (min-width:900px){.creg{grid-template-columns:1fr 1fr}.crow{grid-template-columns:minmax(0,1fr) auto auto 20px;grid-template-areas:"n d t a";padding:16px 6px}.crow .ctz{min-width:150px;text-align:right}}
 .facts4 div{border-top:0!important}.facts4{border-top:2px solid var(--gold)}
+@media (max-width:899px){.facts4{grid-template-columns:1fr!important;gap:0}.facts4 div{border-right:0!important;border-bottom:1px solid var(--rule-l);padding:14px 4px!important}.facts4 div:last-child{border-bottom:0}}
+@media (min-width:560px) and (max-width:899px){.facts4 div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:16px;align-items:baseline}.facts4 span{margin-top:0!important}}
 
 
 /* ===== header v2 ===== */
