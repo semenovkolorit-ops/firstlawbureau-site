@@ -1,9 +1,10 @@
 <!DOCTYPE html><html lang="en" data-l="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <title>Ukrainian-law advocates for citizens of the EU, USA, Canada, UAE and Ukrainians abroad — First International Law Bureau</title><meta name="description" content="Family, inheritance, property, business and documents in Ukraine for foreign nationals and Ukrainians abroad. Consultations with a Ukrainian advocate in English and Ukrainian."><link rel="alternate" hreflang="uk" href="https://firstlawbureau.com/uk/"><link rel="alternate" hreflang="en" href="https://firstlawbureau.com/"><link rel="alternate" hreflang="x-default" href="https://firstlawbureau.com/"><link rel="canonical" href="https://firstlawbureau.com/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="First International Law Bureau"><meta property="og:title" content="Ukrainian-law advocates for citizens of the EU, USA, Canada, UAE and Ukrainians abroad — First International Law Bureau"><meta property="og:description" content="Family, inheritance, property, business and documents in Ukraine for foreign nationals and Ukrainians abroad. Consultations with a Ukrainian advocate in English and Ukrainian."><meta property="og:url" content="https://firstlawbureau.com/"><meta property="og:image" content="https://firstlawbureau.com/img/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "LegalService", "@id": "https://firstlawbureau.com/#org", "name": "First International Law Bureau", "alternateName": ["Перше адвокатське міжнародне бюро", "FLB"], "url": "https://firstlawbureau.com/", "logo": "https://firstlawbureau.com/assets/apple-touch-icon.png", "image": "https://firstlawbureau.com/img/og-image.jpg", "email": "info@firstlawbureau.com", "address": {"@type": "PostalAddress", "addressLocality": "Kyiv", "addressCountry": "UA"}, "areaServed": ["European Union", "United Kingdom", "United States", "Canada", "United Arab Emirates", "Ukraine"], "availableLanguage": ["en", "uk"], "sameAs": ["https://www.linkedin.com/company/firstlawbureau/"], "knowsAbout": ["Ukrainian family law", "Inheritance in Ukraine", "Real estate in Ukraine", "Apostille and legalisation", "Business in Ukraine"]}</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/open-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="assets/fonts/merriweather-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin="">
-<link rel="stylesheet" href="assets/site.css?v=202611231050">
+<link rel="stylesheet" href="assets/site.css?v=202611231110">
 
 
 </head>
@@ -352,7 +353,7 @@ uk:{
  fm_t:'Або залиште контакт — ми напишемо самі', fm_n:'Як до вас звертатися', fm_w:'Де відповісти', fm_c:'Номер або @нік', fm_a:'Напрям', fm_h:'Зручний час для розмови',
  o_tg:'Telegram', o_wa:'WhatsApp', o_call:'Дзвінок', o_mail:'Email',
  fm_note:'Справу тут описувати не потрібно. Обставини та документи адвокат попросить сам, після перевірки конфлікту інтересів.',
- fm_s:'Надіслати запит', fm_w:'Надсилаємо…', fm_ok:'Дякуємо! Запит надіслано, адвокат бюро зв’яжеться з вами в обраному каналі.', fm_err:'Не вдалося надіслати. Напишіть нам на info@firstlawbureau.com або спробуйте ще раз.',
+ fm_s:'Надіслати запит', fm_w:'Надсилаємо…', fm_code:'Номер вашого запиту:', fm_ok:'Дякуємо! Запит надіслано, адвокат бюро зв’яжеться з вами в обраному каналі.', fm_err:'Не вдалося надіслати. Напишіть нам на info@firstlawbureau.com або спробуйте ще раз.',
  ch0:'Telegram: '+F('нік бюро'),
  n1:'Практики', n2:'Про бюро', n3:'Як працюємо', n4:'Контакти',
  cap:'Вікторія Сандулєєва · адвокат, засновниця бюро', ph:'Місце для фото адвоката',
@@ -512,7 +513,7 @@ en:{
  fm_t:'Or leave your contact and we will write to you', fm_n:'Your name', fm_w:'Where to reply', fm_c:'Number or @username', fm_a:'Practice area', fm_h:'Convenient time for a call',
  o_tg:'Telegram', o_wa:'WhatsApp', o_call:'Phone call', o_mail:'Email',
  fm_note:'There is no need to describe your case here. The advocate will ask for the facts and documents after a conflict-of-interest check.',
- fm_s:'Send request', fm_w:'Sending…', fm_ok:'Thank you! Your request has been sent; a bureau advocate will contact you in the channel you chose.', fm_err:'Sending failed. Please write to info@firstlawbureau.com or try again.',
+ fm_s:'Send request', fm_w:'Sending…', fm_code:'Your request number:', fm_ok:'Thank you! Your request has been sent; a bureau advocate will contact you in the channel you chose.', fm_err:'Sending failed. Please write to info@firstlawbureau.com or try again.',
  ch0:'Telegram: '+F('bureau username'),
  n1:'Practice areas', n2:'About', n3:'How we work', n4:'Contact',
  cap:'Victoria Sanduleeva · advocate, founder of the bureau', ph:'Space for the advocate’s photo',
@@ -620,8 +621,8 @@ document.querySelectorAll('form.form').forEach(f=>{
     c.removeAttribute('aria-invalid');er.hidden=true;
     const l=document.documentElement.dataset.l,b=f.querySelector('button[type=submit]'),d={};
     f.querySelectorAll('input,select').forEach(x=>{if(!x.name)return; d[x.name]=x.type==='checkbox'?(x.checked?(l==='uk'?'так':'yes'):''):(x.tagName==='SELECT'?x.options[x.selectedIndex].textContent:x.value);});
-    d.lang=l; d.page=location.href; b.disabled=true; m.textContent=T[l].fm_w;
-    fetch('/api/request',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(j=>{if(!j.ok)throw 0; m.textContent=T[l].fm_ok; f.reset(); syncCt(f);}).catch(()=>{m.textContent=T[l].fm_err;}).finally(()=>{b.disabled=false;});});
+    d.lang=l; d.page=location.href; Object.assign(d,window.FLB_SRC||{}); b.disabled=true; m.textContent=T[l].fm_w;
+    fetch('/api/request',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(j=>{if(!j.ok)throw 0; m.textContent=T[l].fm_ok+(j.code?' '+T[l].fm_code+' '+j.code+'.':''); f.reset(); syncCt(f);}).catch(()=>{m.textContent=T[l].fm_err;}).finally(()=>{b.disabled=false;});});
   f.querySelector('.ct').addEventListener('input',e=>{if(e.target.value.trim()){e.target.removeAttribute('aria-invalid');f.querySelector('.ferr').hidden=true;}});
 });
 // services: menu links open the right item; "book" preselects area
@@ -640,6 +641,7 @@ document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>{h
 const nl = (navigator.language||'en').toLowerCase();
 setLang(document.documentElement.dataset.l||'uk');
 </script>
+<script src="assets/t.js?v=202611231110"></script>
 
 
 </body></html>
