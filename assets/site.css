@@ -766,3 +766,7 @@ button.pill{border:0;cursor:pointer;font:inherit}
 .abdocs div{display:grid;gap:4px;padding:16px 0;border-bottom:1px solid var(--rule-l)}
 @media (min-width:900px){.abdocs div{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) auto;align-items:center;gap:24px}}
 .abdocs b{color:var(--blue);font:700 16px/1.4 var(--serif)}.abdocs span{color:var(--ink);line-height:1.5}
+
+.pv{max-width:760px}.pv h2{font:700 21px/1.35 var(--serif);color:var(--blue);margin:34px 0 10px}.pv h2:first-child{margin-top:0}
+.pv p,.pv li{line-height:1.7;color:var(--ink)}.pv ul{padding-left:20px;margin:0}.pv li{margin:6px 0}
+.pv .upd{color:var(--soft);font-size:14px;margin-top:36px}
