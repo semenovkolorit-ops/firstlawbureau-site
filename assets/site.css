@@ -745,3 +745,24 @@ dialog.cdlg::backdrop{background:rgba(10,18,38,.62)}
 .cd-h h3{margin:0;font:700 22px/1.3 var(--serif);color:var(--blue);padding-right:40px}.cd-h p{margin:8px 0 0;font-size:14.5px;line-height:1.5;color:var(--soft)}
 .cd-x{position:absolute;right:12px;top:12px;width:44px;height:44px;border:0;background:transparent;font-size:28px;line-height:1;color:var(--blue);cursor:pointer;border-radius:50%}.cd-x:hover{background:#F2EFE8}
 button.pill{border:0;cursor:pointer;font:inherit}
+
+.abf{background:var(--blue);color:#fff}
+.abf .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;padding-top:44px;padding-bottom:44px}
+@media (min-width:900px){.abf .wrap{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.abf .geo{grid-column:1/-1;margin:4px 0 0;font-size:16px;color:#E6EAF2}.abf .geo:before{content:"";display:inline-block;width:8px;height:8px;background:var(--gold);margin-right:10px;vertical-align:middle}
+.abf{border-top:1px solid rgba(185,151,91,.35)}
+.abf div.f{border-top:2px solid var(--gold);padding-top:14px}
+.abf b{display:block;font:700 clamp(30px,4vw,42px)/1.1 var(--serif);color:#fff;font-variant-numeric:tabular-nums}
+.abf span{display:block;margin-top:6px;font-size:14.5px;line-height:1.45;color:#C9D2E0}
+.mix{display:grid;gap:22px;max-width:860px}
+.mix .mr{display:grid;gap:8px}
+.mix .mt{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.mix .mt b{font:700 18px/1.3 var(--serif);color:var(--blue)}.mix .mt em{font:700 22px var(--serif);font-style:normal;color:var(--gold-d)}
+.mix .ms{color:var(--soft);font-size:14.5px}
+.mix .bar{height:10px;background:#ECE8DF;border-radius:5px;overflow:hidden}.mix .bar .fill{height:100%;background:var(--gold);border-radius:5px}
+.abpr{display:grid;gap:16px}@media (min-width:760px){.abpr{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.abpr div{background:#fff;border-top:2px solid var(--gold);padding:20px 22px}.abpr b{font:700 17px/1.35 var(--serif);color:var(--blue)}.abpr p{margin:8px 0 0;line-height:1.6}
+.abdocs{display:grid;gap:0;border-top:1px solid var(--rule-l)}
+.abdocs div{display:grid;gap:4px;padding:16px 0;border-bottom:1px solid var(--rule-l)}
+@media (min-width:900px){.abdocs div{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) auto;align-items:center;gap:24px}}
+.abdocs b{color:var(--blue);font:700 16px/1.4 var(--serif)}.abdocs span{color:var(--ink);line-height:1.5}
