@@ -698,9 +698,13 @@ a.pcard:hover{border-color:var(--gold);transform:translateY(-2px)}
 
 :root{color-scheme:only light}
 @media (max-width:1180px){#hdr.hd2.open .nav2{box-shadow:0 18px 30px rgba(8,16,38,.25),0 0 0 100vmax rgba(10,18,38,.55);clip-path:inset(0 -100vmax -100vmax -100vmax)}}
-.tblw{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.ptbl{width:100%;border-collapse:collapse;background:#fff;font-size:15px;min-width:520px}
-.ptbl th{text-align:left;font:600 11.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);padding:0 14px 10px 0;border-bottom:2px solid var(--gold)}
+.tblw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;border:1px solid var(--rule-l);border-top:3px solid var(--gold);padding:20px 24px 4px}
+@media (max-width:600px){.tblw{padding:16px 16px 2px}}
+.ptbl{width:100%;border-collapse:collapse;background:transparent;font-size:15px;min-width:520px}
+.ptbl th{text-align:left;font:600 11.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);padding:0 14px 12px 0;border-bottom:1px solid var(--gold)}
+.ptbl th:last-child,.ptbl td:last-child{padding-right:0}
+.ptbl tbody tr:last-child td{border-bottom:0}
+.ptbl .dur{white-space:nowrap}
 .ptbl td{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule-l);vertical-align:top;color:var(--ink);line-height:1.5}
 .ptbl .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 .ptbl td.num{font:700 16px/1.4 var(--serif);color:var(--blue)}
